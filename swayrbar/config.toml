@@ -3,9 +3,22 @@ refresh_interval = 1000
 [[modules]]
 name = "cmd"
 instance = "0"
-format = 'printf "💡 %s" "$(brightnessctl i | grep -o "([0-9]\\+%)" | tr -d "()")"'
+format = 'printf "💡 %s" "$(brightnessctl i | grep -o "([0-9]\\+%)" | tr -d "()")"  '
 html_escape = true
 #format = "echo '$(brightnessctl i | grep -oP '\(\K[0-9]+(?=%\))')%'"
+
+
+[[modules]]
+name = "cmd"
+instance = "0"
+format = 'printf "⚡ $(cat ~/scripts/status)"'
+html_escape = true
+
+[modules.on_click]
+Left = [
+		"foot",
+    "sh ~/scripts/switchProfile.sh",    
+]
 
 [[modules]]
 name = "battery"

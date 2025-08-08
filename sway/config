@@ -8,6 +8,7 @@ exec autotiling-rs
 exec rclone mount gdrive: /home/gruffelf/gdrive --vfs-cache-mode full --vfs-cache-max-size 3G --vfs-cache-max-age 3h --dir-cache-time 1m --buffer-size 512M 
 # ~/gdrive to be remote location for aiden.torps google driver
 exec wlsunset -t 3500 -S 7:00 -s 17:30
+exec swayidle timeout 300 'brightnessctl g > /tmp/brightness_before_idle && brightnessctl set 1%' resume 'brightnessctl set $(cat /tmp/brightness_before_idle)' timeout 330 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -204,6 +205,9 @@ bindsym $mod+r mode "resize"
     bindsym Print exec grim
 default_border pixel 2
 default_floating_border pixel 2
+gaps outer 3px
+gaps inner 6px
+gaps top 0px
 font pango:FiraCode Nerd Font Mono 10
 
 #
@@ -211,19 +215,20 @@ font pango:FiraCode Nerd Font Mono 10
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-		swaybar_command swaybar
+		swaybar_command waybar
+		#swaybar_command swaybar
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command swayrbar
-		position top
-
-    colors {
-        statusline #ffffff
+    #status_command swayrbar
+#		position top
+#
+#    colors {
+#        statusline #ffffff
 #        background #323232
-				background #20242b
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+#				background #20242b
+#        inactive_workspace #32323200 #32323200 #5c5c5c
+#    }
 }
 
 include /etc/sway/config.d/*
