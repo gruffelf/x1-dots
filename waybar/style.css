@@ -33,7 +33,9 @@ tooltip {
 #battery,
 #network,
 #pulseaudio,
-#backlight {
+#backlight,
+#custom-powersave
+{
     margin: 6px 6px 6px 0px;
     padding: 2px 8px;
 }
@@ -78,7 +80,8 @@ tooltip {
 #memory,
 #network,
 #pulseaudio,
-#backlight {
+#backlight,
+#custom-powersave{
     background-color: @background;
     border: 2px solid @border;
     color: @dark;
