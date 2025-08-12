@@ -10,10 +10,10 @@ CURRENT=$(tuned-adm active | grep -oP '(?<=Current active profile: ).*')
 # Determine the next profile
 if [ "$CURRENT" == "$PROFILE1" ]; then
     NEXT=$PROFILE2
-		echo "off" > "/home/gruffelf/scripts/status"
+		echo "off" > "~/scripts/status"
 else
     NEXT=$PROFILE1
-		echo "on" > "/home/gruffelf/scripts/status"
+		echo "on" > "~/scripts/status"
 fi
 
 tuned-adm profile "$NEXT"
